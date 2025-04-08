@@ -5,12 +5,12 @@
 Suggested Indexes to Improve Performance
 To speed up queries like:
 
-1-Filtering on InStock
-2-Sorting on Price
-3-Aggregating/grouping by Category
-4-Filtering on CreatedAt
+1-Filtering on InStock.
+2-Sorting on Price.
+3-Aggregating/grouping by Category.
+4-Filtering on CreatedAt.
 
-Option 1: Composite Index
+Composite Index
 
 -- For query a (Top 5 expensive in-stock products)
 CREATE NONCLUSTERED INDEX idx_InStock_Price ON Products (InStock, Price DESC);
