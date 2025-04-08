@@ -2,7 +2,7 @@
 
 # 1-Optimization Check:
 
-Suggested Indexes to Improve Performance
+1- Suggested Indexes to Improve Performance
 To speed up queries like:
 
 1-Filtering on InStock.
@@ -22,7 +22,7 @@ CREATE NONCLUSTERED INDEX idx_CreatedAt ON Products (CreatedAt);
 CREATE NONCLUSTERED INDEX idx_Category ON Products (Category);
 
 
-2-View Execution Plan for First Query
+2- View Execution Plan for First Query
 
 To see the estimated execution plan without actually running the query, we can use:
 
@@ -38,7 +38,9 @@ GO
 -- Turn it off afterward
 SET SHOWPLAN_ALL OFF;
 
+3- Script to export this data to a .csv file.
 
+ sqlcmd -S <server_name> -d <database_name> -E -Q "SELECT * FROM Products" -s "," -W -o "C:\Exports\products.csv"
 
 # 2-Approach
 
