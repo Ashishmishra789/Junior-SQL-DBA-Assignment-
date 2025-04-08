@@ -122,17 +122,17 @@ Start by clarifying with the developer or product team:
 2. Analyze the Query
 Once you have the SQL query:
 - Run it in SQL Server Management Studio (SSMS).
-- Use `SET STATISTICS IO, TIME ON;` or `SET SHOWPLAN_ALL ON;` to inspect performance.
+- Use SET STATISTICS IO, TIME ON; or SET SHOWPLAN_ALL ON; to inspect performance.
 - Check for things like:
   - Table scans (bad for performance)
   - Missing indexes
   - High read/write costs
 
->  Look at execution plans and cost distribution.
+Look at execution plans and cost distribution.
 
 
 3. Check Table Structure & Indexes
-- Review the schema — are there indexes on commonly filtered columns like `InStock`, `Category`, or `CreatedAt`?
+- Review the schema — are there indexes on commonly filtered columns like InStock, Category, or CreatedAt?
 - If not, create or suggest non-clustered indexes that match the query patterns (especially for WHERE, ORDER BY, and JOIN clauses).
   
  
@@ -140,8 +140,8 @@ Once you have the SQL query:
 
 4.Optimize the Query
 Refactor the query if needed:
-- Reduce unnecessary columns in `SELECT`
-- Use `TOP` with an `ORDER BY` to limit result sets
+- Reduce unnecessary columns in SELECT
+- Use TOP with an `ORDER BY` to limit result sets
 - Avoid functions in WHERE clause if possible (they break index usage)
 
 Example: sql
@@ -153,24 +153,12 @@ WHERE CreatedAt >= DATEADD(DAY, -30, GETDATE())
 5.Export or Report the Data
 If the team needs this data externally:
 - Use a scheduled job (via SQL Agent or a script) to export it to CSV
-- Use `sqlcmd` or PowerShell for automation
+- Use sqlcmd or PowerShell for automation
 - Store files in shared folders or push to cloud buckets (e.g., S3, Azure Blob)
 
 6.Monitor After the Fix
 - Keep an eye on performance using database monitoring tools (like SQL Sentry, Redgate, or built-in DMVs).
 - Ask the dev team if the changes helped — iterate if needed.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
