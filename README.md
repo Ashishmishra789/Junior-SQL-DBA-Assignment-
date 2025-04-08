@@ -40,8 +40,6 @@ SET SHOWPLAN_ALL OFF;
 
 
 
-
-
 # 2-Approach
 
 Product Analysis & Export - Explained
@@ -104,7 +102,6 @@ Invoke-Sqlcmd -Query "SELECT * FROM Products" -ServerInstance "<server_name>" -D
 Export-Csv -Path "C:\Exports\products.csv" -NoTypeInformation
 This does the same thing but uses PowerShell commands.
 
-----
 1.These queries and exports help with reporting, monitoring, and business decisions.
 2.The logic is simple, but performance can be improved a lot with the right indexes.
 3.Exporting is useful for backups, Excel reports, or sharing with non-technical folks.
@@ -121,7 +118,6 @@ Start by clarifying with the developer or product team:
 - Is it slow all the time or only with certain filters (e.g., sorting by price, filtering by stock)?
 - What's the query being run?
 
----
 
 2. Analyze the Query
 Once you have the SQL query:
@@ -134,7 +130,6 @@ Once you have the SQL query:
 
 >  Look at execution plans and cost distribution.
 
----
 
 3. Check Table Structure & Indexes
 - Review the schema — are there indexes on commonly filtered columns like `InStock`, `Category`, or `CreatedAt`?
@@ -150,9 +145,9 @@ Refactor the query if needed:
 - Avoid functions in WHERE clause if possible (they break index usage)
 
 Example: sql
--- Bad
+Bad
 WHERE DATEDIFF(DAY, CreatedAt, GETDATE()) < 30
--- Good
+Good
 WHERE CreatedAt >= DATEADD(DAY, -30, GETDATE())
 
 5.Export or Report the Data
@@ -160,8 +155,6 @@ If the team needs this data externally:
 - Use a scheduled job (via SQL Agent or a script) to export it to CSV
 - Use `sqlcmd` or PowerShell for automation
 - Store files in shared folders or push to cloud buckets (e.g., S3, Azure Blob)
-
----
 
 6.Monitor After the Fix
 - Keep an eye on performance using database monitoring tools (like SQL Sentry, Redgate, or built-in DMVs).
