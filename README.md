@@ -42,7 +42,7 @@ SET SHOWPLAN_ALL OFF;
 
  sqlcmd -S <server_name> -d <database_name> -E -Q "SELECT * FROM Products" -s "," -W -o "C:\Exports\products.csv"
 
-# 2-Approach
+# 2-Approach:
 
 Product Analysis & Export - Explained
 
@@ -110,7 +110,7 @@ This does the same thing but uses PowerShell commands.
 
 
 
-# 3-Real-World Handling of a Slow Product Search
+# 3-Real-World Handling of a Slow Product Search:
 
 Real-World Handling of a Slow Product Search
 
