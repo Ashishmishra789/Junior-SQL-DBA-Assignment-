@@ -149,16 +149,11 @@ Refactor the query if needed:
 - Use `TOP` with an `ORDER BY` to limit result sets
 - Avoid functions in WHERE clause if possible (they break index usage)
 
-Example:
-```sql
+Example: sql
 -- Bad
 WHERE DATEDIFF(DAY, CreatedAt, GETDATE()) < 30
-
 -- Good
 WHERE CreatedAt >= DATEADD(DAY, -30, GETDATE())
-```
-
----
 
 5.Export or Report the Data
 If the team needs this data externally:
