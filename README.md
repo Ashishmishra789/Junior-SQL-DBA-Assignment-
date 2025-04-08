@@ -141,7 +141,7 @@ Look at execution plans and cost distribution.
 4.Optimize the Query
 Refactor the query if needed:
 - Reduce unnecessary columns in SELECT
-- Use TOP with an `ORDER BY` to limit result sets
+- Use TOP with an ORDER BY to limit result sets
 - Avoid functions in WHERE clause if possible (they break index usage)
 
 Example: sql
